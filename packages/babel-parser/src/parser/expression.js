@@ -40,6 +40,7 @@ import {
   SCOPE_FUNCTION,
   SCOPE_SUPER,
   SCOPE_PROGRAM,
+  SCOPE_OTHER,
 } from "../util/scopeflags";
 import { ExpressionErrors } from "./util";
 import {
@@ -78,6 +79,13 @@ export default class ExpressionParser extends LValParser {
   ) => T;
   +parseFunctionParams: (node: N.Function, allowModifiers?: boolean) => void;
   +takeDecorators: (node: N.HasDecorators) => void;
+  +parseBlockOrModuleBlockBody: (
+    body: N.Statement[],
+    directives: ?(N.Directive[]),
+    topLevel: boolean,
+    end: TokenType,
+    afterBlockParse?: (hasStrictModeDirective: boolean) => void
+  ) => void
   */
 
   // For object literal, check if property __proto__ has been used more than once.
@@ -494,6 +502,15 @@ export default class ExpressionParser extends LValParser {
   parseMaybeUnary(refExpressionErrors: ?ExpressionErrors): N.Expression {
     if (this.isContextual("await") && this.isAwaitAllowed()) {
       return this.parseAwait();
+    }
+    if (this.isContextual("module")) {
+      const lookahead = this.lookahead();
+      if (
+        lookahead.type === tt.braceL &&
+        !this.hasPrecedingLineBreak(lookahead)
+      ) {
+        return this.parseModuleExpression();
+      }
     }
     const update = this.match(tt.incDec);
     const node = this.startNode();
@@ -2610,5 +2627,22 @@ export default class ExpressionParser extends LValParser {
     this.state.inFSharpPipelineDirectBody = oldInFSharpPipelineDirectBody;
 
     return ret;
+  }
+
+  // https://github.com/tc39/proposal-js-module-blocks
+  parseModuleExpression(): N.ModuleExpression {
+    this.expectPlugin("jsModuleBlocks");
+    const node = this.startNode<N.ModuleExpression>();
+    node.body = [];
+    this.next(); // eat "module"
+    const oldLabels = this.state.labels;
+    this.state.labels = [];
+    this.eat(tt.braceL);
+    this.scope.enter(SCOPE_OTHER);
+    this.parseBlockOrModuleBlockBody(node.body, undefined, true, tt.braceR);
+    this.scope.exit();
+    this.eat(tt.braceR);
+    this.state.labels = oldLabels;
+    return this.finishNode<N.ModuleExpression>(node, "ModuleExpression");
   }
 }
