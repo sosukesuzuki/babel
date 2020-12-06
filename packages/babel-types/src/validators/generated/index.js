@@ -2601,6 +2601,20 @@ export function isStaticBlock(node: ?Object, opts?: Object): boolean {
 
   return false;
 }
+export function isModuleExpression(node: ?Object, opts?: Object): boolean {
+  if (!node) return false;
+
+  const nodeType = node.type;
+  if (nodeType === "ModuleExpression") {
+    if (typeof opts === "undefined") {
+      return true;
+    } else {
+      return shallowEqual(node, opts);
+    }
+  }
+
+  return false;
+}
 export function isTSParameterProperty(node: ?Object, opts?: Object): boolean {
   if (!node) return false;
 
@@ -3561,6 +3575,7 @@ export function isExpression(node: ?Object, opts?: Object): boolean {
     "RecordExpression" === nodeType ||
     "TupleExpression" === nodeType ||
     "DecimalLiteral" === nodeType ||
+    "ModuleExpression" === nodeType ||
     "TSAsExpression" === nodeType ||
     "TSTypeAssertion" === nodeType ||
     "TSNonNullExpression" === nodeType ||
