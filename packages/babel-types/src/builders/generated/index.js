@@ -738,6 +738,10 @@ export function staticBlock(...args: Array<any>): Object {
   return builder("StaticBlock", ...args);
 }
 export { staticBlock as StaticBlock };
+export function moduleExpression(...args: Array<any>): Object {
+  return builder("ModuleExpression", ...args);
+}
+export { moduleExpression as ModuleExpression };
 export function tsParameterProperty(...args: Array<any>): Object {
   return builder("TSParameterProperty", ...args);
 }
