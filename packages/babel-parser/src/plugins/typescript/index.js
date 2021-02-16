@@ -15,7 +15,6 @@ import type Parser from "../../parser";
 import {
   type BindingTypes,
   SCOPE_TS_MODULE,
-  SCOPE_OTHER,
   BIND_TS_ENUM,
   BIND_TS_CONST_ENUM,
   BIND_TS_TYPE,
@@ -1392,7 +1391,6 @@ export default (superClass: Class<Parser>): Class<Parser> =>
 
     tsParseModuleBlock(): N.TsModuleBlock {
       const node: N.TsModuleBlock = this.startNode();
-      this.scope.enter(SCOPE_OTHER);
 
       this.expect(tt.braceL);
       // Inside of a module block is considered "top-level", meaning it can have imports and exports.
@@ -1402,7 +1400,6 @@ export default (superClass: Class<Parser>): Class<Parser> =>
         /* topLevel */ true,
         /* end */ tt.braceR,
       );
-      this.scope.exit();
       return this.finishNode(node, "TSModuleBlock");
     }
 

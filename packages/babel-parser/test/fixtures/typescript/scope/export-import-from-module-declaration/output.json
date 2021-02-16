@@ -1,0 +1,86 @@
+{
+  "type": "File",
+  "start":0,"end":71,"loc":{"start":{"line":1,"column":0},"end":{"line":4,"column":1}},
+  "program": {
+    "type": "Program",
+    "start":0,"end":71,"loc":{"start":{"line":1,"column":0},"end":{"line":4,"column":1}},
+    "sourceType": "module",
+    "interpreter": null,
+    "body": [
+      {
+        "type": "TSModuleDeclaration",
+        "start":0,"end":71,"loc":{"start":{"line":1,"column":0},"end":{"line":4,"column":1}},
+        "id": {
+          "type": "StringLiteral",
+          "start":15,"end":20,"loc":{"start":{"line":1,"column":15},"end":{"line":1,"column":20}},
+          "extra": {
+            "rawValue": "foo",
+            "raw": "\"foo\""
+          },
+          "value": "foo"
+        },
+        "body": {
+          "type": "TSModuleBlock",
+          "start":21,"end":71,"loc":{"start":{"line":1,"column":21},"end":{"line":4,"column":1}},
+          "body": [
+            {
+              "type": "ImportDeclaration",
+              "start":25,"end":51,"loc":{"start":{"line":2,"column":2},"end":{"line":2,"column":28}},
+              "importKind": "value",
+              "specifiers": [
+                {
+                  "type": "ImportSpecifier",
+                  "start":34,"end":37,"loc":{"start":{"line":2,"column":11},"end":{"line":2,"column":14}},
+                  "imported": {
+                    "type": "Identifier",
+                    "start":34,"end":37,"loc":{"start":{"line":2,"column":11},"end":{"line":2,"column":14},"identifierName":"foo"},
+                    "name": "foo"
+                  },
+                  "local": {
+                    "type": "Identifier",
+                    "start":34,"end":37,"loc":{"start":{"line":2,"column":11},"end":{"line":2,"column":14},"identifierName":"foo"},
+                    "name": "foo"
+                  }
+                }
+              ],
+              "source": {
+                "type": "StringLiteral",
+                "start":45,"end":50,"loc":{"start":{"line":2,"column":22},"end":{"line":2,"column":27}},
+                "extra": {
+                  "rawValue": "bar",
+                  "raw": "\"bar\""
+                },
+                "value": "bar"
+              }
+            },
+            {
+              "type": "ExportNamedDeclaration",
+              "start":54,"end":69,"loc":{"start":{"line":3,"column":2},"end":{"line":3,"column":17}},
+              "exportKind": "value",
+              "specifiers": [
+                {
+                  "type": "ExportSpecifier",
+                  "start":63,"end":66,"loc":{"start":{"line":3,"column":11},"end":{"line":3,"column":14}},
+                  "local": {
+                    "type": "Identifier",
+                    "start":63,"end":66,"loc":{"start":{"line":3,"column":11},"end":{"line":3,"column":14},"identifierName":"foo"},
+                    "name": "foo"
+                  },
+                  "exported": {
+                    "type": "Identifier",
+                    "start":63,"end":66,"loc":{"start":{"line":3,"column":11},"end":{"line":3,"column":14},"identifierName":"foo"},
+                    "name": "foo"
+                  }
+                }
+              ],
+              "source": null,
+              "declaration": null
+            }
+          ]
+        },
+        "declare": true
+      }
+    ],
+    "directives": []
+  }
+}

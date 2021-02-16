@@ -10,6 +10,7 @@ import {
   BIND_FLAGS_CLASS,
   type ScopeFlags,
   type BindingTypes,
+  SCOPE_TS_MODULE,
 } from "../../util/scopeflags";
 import * as N from "../../types";
 
@@ -95,11 +96,25 @@ export default class TypeScriptScopeHandler extends ScopeHandler<TypeScriptScope
   }
 
   checkLocalExport(id: N.Identifier) {
+    const scope = this.currentModuleScope();
     if (
-      this.scopeStack[0].types.indexOf(id.name) === -1 &&
-      this.scopeStack[0].exportOnlyBindings.indexOf(id.name) === -1
+      scope.types.indexOf(id.name) === -1 &&
+      scope.exportOnlyBindings.indexOf(id.name) === -1
     ) {
       super.checkLocalExport(id);
     }
+  }
+
+  currentTsModuleScope(): TypeScriptScope | typeof undefined {
+    for (let i = this.scopeStack.length - 1; i > 0; i--) {
+      const scope = this.scopeStack[i];
+      if (scope?.flags & SCOPE_TS_MODULE) {
+        return scope;
+      }
+    }
+  }
+
+  currentModuleScope(): TypeScriptScope {
+    return this.currentTsModuleScope() ?? super.currentModuleScope();
   }
 }

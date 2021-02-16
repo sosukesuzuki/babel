@@ -15,6 +15,7 @@ import {
   BIND_KIND_VALUE,
   type ScopeFlags,
   type BindingTypes,
+  SCOPE_TS_MODULE,
 } from "./scopeflags";
 import * as N from "../types";
 import { Errors } from "../parser/error";
@@ -126,7 +127,10 @@ export default class ScopeHandler<IScope: Scope = Scope> {
   }
 
   maybeExportDefined(scope: IScope, name: string) {
-    if (this.inModule && scope.flags & SCOPE_PROGRAM) {
+    if (
+      this.inModule &&
+      (scope.flags & SCOPE_PROGRAM || scope.flags & SCOPE_TS_MODULE)
+    ) {
       this.undefinedExports.delete(name);
     }
   }
@@ -174,13 +178,14 @@ export default class ScopeHandler<IScope: Scope = Scope> {
   }
 
   checkLocalExport(id: N.Identifier) {
+    const scope = this.currentModuleScope();
     if (
-      this.scopeStack[0].lexical.indexOf(id.name) === -1 &&
-      this.scopeStack[0].var.indexOf(id.name) === -1 &&
+      scope.lexical.indexOf(id.name) === -1 &&
+      scope.var.indexOf(id.name) === -1 &&
       // In strict mode, scope.functions will always be empty.
       // Modules are strict by default, but the `scriptMode` option
       // can overwrite this behavior.
-      this.scopeStack[0].functions.indexOf(id.name) === -1
+      scope.functions.indexOf(id.name) === -1
     ) {
       this.undefinedExports.set(id.name, id.start);
     }
@@ -212,5 +217,9 @@ export default class ScopeHandler<IScope: Scope = Scope> {
         return scope;
       }
     }
+  }
+
+  currentModuleScope(): IScope {
+    return this.scopeStack[0];
   }
 }

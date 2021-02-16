@@ -49,7 +49,8 @@ export default class FlowScopeHandler extends ScopeHandler<FlowScope> {
   }
 
   checkLocalExport(id: N.Identifier) {
-    if (this.scopeStack[0].declareFunctions.indexOf(id.name) === -1) {
+    const scope = this.currentModuleScope();
+    if (scope.declareFunctions.indexOf(id.name) === -1) {
       super.checkLocalExport(id);
     }
   }
