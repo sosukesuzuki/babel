@@ -2462,16 +2462,21 @@ export default class ExpressionParser extends LValParser {
   parseAwaitOps(node: N.AwaitExpression) {
     this.expectPlugin("awaitOps");
     this.next(); // eat .
-    if (
-      this.isContextual("all") ||
-      this.isContextual("race") ||
-      this.isContextual("allSettled") ||
-      this.isContextual("any")
-    ) {
+    if (this.match(tt.name)) {
+      if (
+        !this.isContextual("all") &&
+        !this.isContextual("race") &&
+        !this.isContextual("allSettled") &&
+        !this.isContextual("any")
+      ) {
+        this.raise(
+          this.state.start,
+          Errors.AwaitHasInvalidOperation,
+          this.state.value,
+        );
+      }
       const operation = this.parseIdentifier();
       node.operation = operation;
-    } else {
-      this.raise(this.state.start, Errors.AwaitHasInvalidOperation);
     }
   }
 
