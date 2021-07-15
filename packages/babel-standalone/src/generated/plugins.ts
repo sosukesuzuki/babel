@@ -4,6 +4,7 @@
  */
 import externalHelpers from "@babel/plugin-external-helpers";
 import syntaxAsyncGenerators from "@babel/plugin-syntax-async-generators";
+import syntaxAwaitOps from "@babel/plugin-syntax-await-ops";
 import syntaxClassProperties from "@babel/plugin-syntax-class-properties";
 import syntaxClassStaticBlock from "@babel/plugin-syntax-class-static-block";
 import syntaxDecimal from "@babel/plugin-syntax-decimal";
@@ -99,6 +100,7 @@ import transformUnicodeRegex from "@babel/plugin-transform-unicode-regex";
 export {
   externalHelpers,
   syntaxAsyncGenerators,
+  syntaxAwaitOps,
   syntaxClassProperties,
   syntaxClassStaticBlock,
   syntaxDecimal,
@@ -195,6 +197,7 @@ export {
 export const all: { [k: string]: any } = {
   "external-helpers": externalHelpers,
   "syntax-async-generators": syntaxAsyncGenerators,
+  "syntax-await-ops": syntaxAwaitOps,
   "syntax-class-properties": syntaxClassProperties,
   "syntax-class-static-block": syntaxClassStaticBlock,
   "syntax-decimal": syntaxDecimal,

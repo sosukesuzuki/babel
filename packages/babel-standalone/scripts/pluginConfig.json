@@ -1,6 +1,7 @@
 [
   "external-helpers",
   "syntax-async-generators",
+  "syntax-await-ops",
   "syntax-class-properties",
   "syntax-class-static-block",
   "syntax-decimal",

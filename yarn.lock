@@ -1604,6 +1604,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/plugin-syntax-await-ops@workspace:*, @babel/plugin-syntax-await-ops@workspace:packages/babel-plugin-syntax-await-ops":
+  version: 0.0.0-use.local
+  resolution: "@babel/plugin-syntax-await-ops@workspace:packages/babel-plugin-syntax-await-ops"
+  dependencies:
+    "@babel/helper-plugin-utils": "workspace:^7.14.5"
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  languageName: unknown
+  linkType: soft
+
 "@babel/plugin-syntax-bigint@npm:^7.8.3":
   version: 7.8.3
   resolution: "@babel/plugin-syntax-bigint@npm:7.8.3"
@@ -3443,6 +3453,7 @@ __metadata:
     "@babel/plugin-proposal-throw-expressions": "workspace:*"
     "@babel/plugin-proposal-unicode-property-regex": "workspace:*"
     "@babel/plugin-syntax-async-generators": ^7.8.4
+    "@babel/plugin-syntax-await-ops": "workspace:*"
     "@babel/plugin-syntax-class-properties": ^7.12.13
     "@babel/plugin-syntax-class-static-block": "workspace:*"
     "@babel/plugin-syntax-decimal": "workspace:*"
