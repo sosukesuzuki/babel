@@ -27,7 +27,9 @@
     "./packages/babel-highlight/src/**/*.ts",
     "./packages/babel-plugin-bugfix-v8-spread-parameters-in-optional-chaining/src/**/*.ts",
     "./packages/babel-plugin-proposal-async-do-expressions/src/**/*.ts",
+    "./packages/babel-plugin-proposal-await-ops/src/**/*.ts",
     "./packages/babel-plugin-syntax-async-do-expressions/src/**/*.ts",
+    "./packages/babel-plugin-syntax-await-ops/src/**/*.ts",
     "./packages/babel-plugin-transform-classes/src/**/*.ts",
     "./packages/babel-plugin-transform-react-jsx/src/**/*.ts",
     "./packages/babel-plugin-transform-runtime/src/**/*.ts",
@@ -115,8 +117,14 @@
       "@babel/plugin-proposal-async-do-expressions": [
         "./packages/babel-plugin-proposal-async-do-expressions/src"
       ],
+      "@babel/plugin-proposal-await-ops": [
+        "./packages/babel-plugin-proposal-await-ops/src"
+      ],
       "@babel/plugin-syntax-async-do-expressions": [
         "./packages/babel-plugin-syntax-async-do-expressions/src"
+      ],
+      "@babel/plugin-syntax-await-ops": [
+        "./packages/babel-plugin-syntax-await-ops/src"
       ],
       "@babel/plugin-transform-classes": [
         "./packages/babel-plugin-transform-classes/src"
