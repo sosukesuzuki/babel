@@ -179,6 +179,11 @@ function buildYieldAwait(keyword: string) {
   return function (node: any) {
     this.word(keyword);
 
+    if (keyword === "await" && node.operation) {
+      this.token(".");
+      this.word(node.operation.name);
+    }
+
     if (node.delegate) {
       this.token("*");
     }
