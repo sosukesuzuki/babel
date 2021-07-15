@@ -1092,6 +1092,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@babel/plugin-proposal-await-ops@workspace:packages/babel-plugin-proposal-await-ops":
+  version: 0.0.0-use.local
+  resolution: "@babel/plugin-proposal-await-ops@workspace:packages/babel-plugin-proposal-await-ops"
+  dependencies:
+    "@babel/core": "workspace:*"
+    "@babel/helper-plugin-test-runner": "workspace:*"
+    "@babel/helper-plugin-utils": "workspace:^7.14.5"
+    "@babel/plugin-syntax-await-ops": "workspace:^7.14.5"
+    "@babel/traverse": "workspace:*"
+    "@babel/types": "workspace:*"
+  peerDependencies:
+    "@babel/core": ^7.14.5
+  languageName: unknown
+  linkType: soft
+
 "@babel/plugin-proposal-class-properties@npm:^7.14.5":
   version: 7.14.5
   resolution: "@babel/plugin-proposal-class-properties@npm:7.14.5"
@@ -1603,6 +1618,16 @@ __metadata:
   checksum: 39685944ffe342981afb1fe3af824305e94ee249b1841c78c1112f93d256d3d405902ac146ab3bad8c243710f081621f9fbf53c62474800d398293c99521c8ef
   languageName: node
   linkType: hard
+
+"@babel/plugin-syntax-await-ops@workspace:*, @babel/plugin-syntax-await-ops@workspace:^7.14.5, @babel/plugin-syntax-await-ops@workspace:packages/babel-plugin-syntax-await-ops":
+  version: 0.0.0-use.local
+  resolution: "@babel/plugin-syntax-await-ops@workspace:packages/babel-plugin-syntax-await-ops"
+  dependencies:
+    "@babel/helper-plugin-utils": "workspace:^7.14.5"
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  languageName: unknown
+  linkType: soft
 
 "@babel/plugin-syntax-bigint@npm:^7.8.3":
   version: 7.8.3
@@ -3443,6 +3468,7 @@ __metadata:
     "@babel/plugin-proposal-throw-expressions": "workspace:*"
     "@babel/plugin-proposal-unicode-property-regex": "workspace:*"
     "@babel/plugin-syntax-async-generators": ^7.8.4
+    "@babel/plugin-syntax-await-ops": "workspace:*"
     "@babel/plugin-syntax-class-properties": ^7.12.13
     "@babel/plugin-syntax-class-static-block": "workspace:*"
     "@babel/plugin-syntax-decimal": "workspace:*"

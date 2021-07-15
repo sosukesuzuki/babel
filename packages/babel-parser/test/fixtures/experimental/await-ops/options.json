@@ -1,0 +1,4 @@
+{
+  "plugins": ["awaitOps", "topLevelAwait"],
+  "sourceType": "module"
+}

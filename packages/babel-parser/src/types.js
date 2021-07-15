@@ -418,6 +418,7 @@ export type YieldExpression = NodeBase & {
 export type AwaitExpression = NodeBase & {
   type: "AwaitExpression",
   argument: Expression,
+  operation?: Identifier | null,
 };
 
 export type ArrayExpression = NodeBase & {

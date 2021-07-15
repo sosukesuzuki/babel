@@ -22,6 +22,7 @@ export const ErrorMessages = makeErrorTemplates(
       "Can not use 'await' as identifier inside a static block.",
     AwaitExpressionFormalParameter:
       "'await' is not allowed in async function parameters.",
+    AwaitHasInvalidOperation: "'await' has invalid operation '%0'.",
     AwaitNotInAsyncContext:
       "'await' is only allowed within async functions and at the top levels of modules.",
     AwaitNotInAsyncFunction: "'await' is only allowed within async functions.",

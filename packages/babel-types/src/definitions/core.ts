@@ -1953,6 +1953,11 @@ defineType("AwaitExpression", {
     argument: {
       validate: assertNodeType("Expression"),
     },
+    // https://github.com/tc39/proposal-await.ops
+    operation: {
+      optional: true,
+      validate: assertNodeType("Identifier"),
+    },
   },
 });
 

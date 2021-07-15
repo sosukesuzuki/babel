@@ -2447,11 +2447,37 @@ export default class ExpressionParser extends LValParser {
       }
     }
 
+    if (this.match(tt.dot)) {
+      this.parseAwaitOps((node: N.AwaitExpression));
+    }
+
     if (!this.state.soloAwait) {
       node.argument = this.parseMaybeUnary(null, true);
     }
 
     return this.finishNode(node, "AwaitExpression");
+  }
+
+  // https://github.com/tc39/proposal-await.ops
+  parseAwaitOps(node: N.AwaitExpression) {
+    this.expectPlugin("awaitOps");
+    this.next(); // eat .
+    if (this.match(tt.name)) {
+      if (
+        !this.isContextual("all") &&
+        !this.isContextual("race") &&
+        !this.isContextual("allSettled") &&
+        !this.isContextual("any")
+      ) {
+        this.raise(
+          this.state.start,
+          Errors.AwaitHasInvalidOperation,
+          this.state.value,
+        );
+      }
+      const operation = this.parseIdentifier();
+      node.operation = operation;
+    }
   }
 
   isAmbiguousAwait(): boolean {

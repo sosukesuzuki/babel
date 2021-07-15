@@ -1,0 +1,39 @@
+{
+  "name": "@babel/plugin-proposal-await-ops",
+  "version": "7.14.5",
+  "description": "Transform await.ops to ES2021",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel.git",
+    "directory": "packages/babel-plugin-proposal-await-ops"
+  },
+  "homepage": "https://babel.dev/docs/en/next/babel-plugin-proposal-await-ops",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
+  },
+  "keywords": [
+    "babel-plugin"
+  ],
+  "dependencies": {
+    "@babel/helper-plugin-utils": "workspace:^7.14.5",
+    "@babel/plugin-syntax-await-ops": "workspace:^7.14.5",
+    "@babel/types": "workspace:*"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.14.5"
+  },
+  "devDependencies": {
+    "@babel/core": "workspace:*",
+    "@babel/helper-plugin-test-runner": "workspace:*",
+    "@babel/traverse": "workspace:*"
+  },
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "author": "The Babel Team (https://babel.dev/team)"
+}

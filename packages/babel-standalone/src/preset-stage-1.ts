@@ -25,6 +25,7 @@ export default (_: any, opts: any = {}) => {
       babelPlugins.proposalExportDefaultFrom,
       [babelPlugins.proposalPipelineOperator, { proposal: pipelineProposal }],
       babelPlugins.proposalDoExpressions,
+      babelPlugins.syntaxAwaitOps,
     ],
   };
 };
