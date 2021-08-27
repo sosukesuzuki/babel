@@ -28,15 +28,15 @@
                     {
                       "type": "TSMethodSignature",
                       "start":13,"end":31,"loc":{"start":{"line":2,"column":2},"end":{"line":2,"column":20}},
-                      "kind": "get",
                       "key": {
                         "type": "Identifier",
                         "start":17,"end":20,"loc":{"start":{"line":2,"column":6},"end":{"line":2,"column":9},"identifierName":"foo"},
                         "name": "foo"
                       },
                       "computed": false,
-                      "parameters": [],
-                      "typeAnnotation": {
+                      "kind": "get",
+                      "params": [],
+                      "returnType": {
                         "type": "TSTypeAnnotation",
                         "start":22,"end":30,"loc":{"start":{"line":2,"column":11},"end":{"line":2,"column":19}},
                         "typeAnnotation": {
@@ -48,14 +48,14 @@
                     {
                       "type": "TSMethodSignature",
                       "start":34,"end":45,"loc":{"start":{"line":3,"column":2},"end":{"line":3,"column":13}},
-                      "kind": "set",
                       "key": {
                         "type": "Identifier",
                         "start":38,"end":41,"loc":{"start":{"line":3,"column":6},"end":{"line":3,"column":9},"identifierName":"bar"},
                         "name": "bar"
                       },
                       "computed": false,
-                      "parameters": [
+                      "kind": "set",
+                      "params": [
                         {
                           "type": "Identifier",
                           "start":42,"end":43,"loc":{"start":{"line":3,"column":10},"end":{"line":3,"column":11},"identifierName":"v"},
